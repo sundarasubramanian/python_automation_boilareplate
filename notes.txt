@@ -1,0 +1,10 @@
+Developer and TODO notes for the automation boilerplate
+
+- Supports Chrome and Firefox via webdriver-manager
+- Run `python scripts/generate_pptx.py` to create the PPTX slides under docs/
+- CI notes: see notes_ci.md for Jenkins steps
+
+TODO:
+- Add cross-browser matrix and parallelization examples
+- Add secrets management for credentials
+- Add GitHub Actions workflow (optional)

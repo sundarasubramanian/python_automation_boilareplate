@@ -1,0 +1,6 @@
+selenium>=4.0.0
+webdriver-manager>=4.0.0
+pytest>=7.0.0
+pytest-html>=3.0.0
+python-pptx>=0.6.21
+pytest-xdist>=3.0.0

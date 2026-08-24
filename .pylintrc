@@ -1,0 +1,4 @@
+[MASTER]
+ignore=tests
+disable=missing-docstring,invalid-name
+max-line-length=100
