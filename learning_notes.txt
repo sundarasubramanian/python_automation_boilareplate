@@ -1,0 +1,46 @@
+Learning notes: Python Selenium automation (quick study guide)
+
+1) Page Object Model (POM)
+- Each page of the web app gets a class with locators and interaction methods.
+- Keeps tests readable and isolated from changes in locators.
+- Example: pages/home_page.py -> HomePage.open(), HomePage.login(username, password)
+
+2) pytest basics
+- Use fixtures (e.g., driver) to manage setup/teardown.
+- Use markers for grouping tests (smoke, regression).
+- Use pytest.ini to configure test discovery and addopts.
+
+3) WebDriver management
+- webdriver-manager downloads driver binaries automatically (ChromeDriver, GeckoDriver).
+- The actual browser (Chrome/Firefox) must be installed on the machine/agent.
+- Use options to run headless in CI.
+
+4) Assertions & reliability
+- Centralize assertions to attach screenshots on failure and provide better messages.
+- Prefer waiting for elements with explicit waits (WebDriverWait + ExpectedConditions) over implicit sleeps.
+
+5) Reporting
+- pytest-html produces a shareable report; configure screenshots to be saved under reports/ and linked in the report.
+- Archive `reports/` in CI and publish via HTML Publisher (Jenkins) or Actions artifacts (GitHub Actions).
+
+6) Parallel runs
+- Use pytest-xdist to run tests in parallel. Keep tests independent (no shared state).
+- Consider using a session-level configuration or test data isolation for tests that touch a shared backend.
+
+7) CI tips (Jenkins)
+- Use separate jobs for each browser or container images that include browsers.
+- Save test artifacts (reports/screenshots) and mark job health based on failing tests.
+- Use environment variables to switch browsers and headless mode.
+
+8) Next learning steps
+- Add visual regression checks (percy, applitools)
+- Integrate with cloud grid providers (BrowserStack, Sauce)
+- Add retries for flakiness (pytest-rerunfailures or custom retry logic)
+- Measure test runtime and split long suites into parallel shards
+
+References & quick commands
+- Create venv: python -m venv venv
+- Activate (mac/linux): source venv/bin/activate
+- Install: pip install -r requirements.txt
+- Run single test: pytest tests/test_smoke_home.py::test_home_title -q
+- Run parallel: ./scripts/run_parallel.sh 4
