@@ -36,7 +36,7 @@ def driver(request, config):
     drv.quit()
 
 
-# hook to set report status on node for teardown
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
     rep = outcome.get_result()

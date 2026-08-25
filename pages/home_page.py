@@ -1,6 +1,10 @@
-from .base_page import BasePage
+"""Page object for the application's home page."""
+
+from pages.base_page import BasePage
 
 class HomePage(BasePage):
+    """Page object for the application's home page."""
+
     def __init__(self, driver, timeout=10):
         super().__init__(driver, timeout)
         self.url = 'https://example.com'
